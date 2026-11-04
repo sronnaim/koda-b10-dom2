@@ -70,6 +70,11 @@
                 const stopGreenCounter = startCounter(green)
                 await wait(3000)
                 stopGreenCounter()
+
+                await wait(100)
+                red.textContent = 0
+                yellow.textContent = 0
+                green.textContent = 0
             }
         }
 
