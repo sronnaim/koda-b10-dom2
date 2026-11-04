@@ -12,23 +12,29 @@ li {
 
 body {
     font-family: 'Hanken Grotesk', sans-serif;
+    height: 100vh;
+    display: flex;
 }
 
+main {
+    margin: auto;
+}
 
 ul {
     background-color: black;
     max-width: 10rem;
     display: flex;
+    align-items: center;
     flex-direction: column;
     padding: 2rem;
-    border-radius: 2rem;
+    border-radius: 1rem;
     gap: 1rem;
-    margin: auto;
 
     li {
         aspect-ratio: 1/1;
         background-color: gray;
         border-radius: 100%;
+        width: fit-content;
         color: white;
         display: flex;
         justify-content: center;

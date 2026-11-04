@@ -33,7 +33,7 @@
         }
 
         function startCounter(el) {
-            let second = Number(el.textContent)
+            let second = 0
 
             const i = setInterval(() => {
                 second++
@@ -42,8 +42,9 @@
 
 
             return () => {
-                el.textContent = 0
-                clearInterval(i)
+                setTimeout(() => {
+                    clearInterval(i)
+                }, 50)
             }
         }
 
