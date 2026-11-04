@@ -10,6 +10,10 @@ li {
     list-style-type: none;
 }
 
+body {
+    font-family: 'Hanken Grotesk', sans-serif;
+}
+
 
 ul {
     background-color: black;
@@ -26,7 +30,10 @@ ul {
         background-color: gray;
         border-radius: 100%;
         color: white;
-        vertical-align: middle;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
     }
 }
 
@@ -36,6 +43,7 @@ ul {
 
 .yellow {
     background-color: yellow;
+    color: black;
 }
 
 .green {

@@ -7,15 +7,19 @@
     <meta name='description' content='A typical traffic light'>
     <title>Traffic Light</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <main>
         <p></p>
         <ul>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>0</li>
+            <li>0</li>
+            <li>0</li>
         </ul>
     </main>
 
@@ -23,41 +27,52 @@
         const red = document.querySelector("li:first-child")
         const yellow = document.querySelector("li:nth-child(2)")
         const green = document.querySelector("li:last-child")
-        const p = document.querySelector("p")
-        let elapsed = 0
-        p.textContent = elapsed
 
-        setInterval(() => {
-            elapsed++
-            p.textContent = elapsed
-        }, 1000)
+        async function wait(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms))
+        }
 
-        function start() {
-            red.classList.add('red')
+        function startCounter(el) {
+            let second = Number(el.textContent)
 
-            setTimeout(() => {
-                elapsed = 0
+            const i = setInterval(() => {
+                second++
+                el.textContent = second
+            }, 1000)
+
+
+            return () => {
+                el.textContent = 0
+                clearInterval(i)
+            }
+        }
+
+        const start = async () => {
+            while (true) {
+                green.classList.remove('green')
+                red.classList.add('red')
+
+                const stopRedCounter = startCounter(red)
+                await wait(3000)
+                stopRedCounter()
+
                 red.classList.remove('red')
                 yellow.classList.add('yellow')
 
-                setTimeout(() => {
-                    elapsed = 0
+                const stopYellowCounter = startCounter(yellow)
+                await wait(2000)
+                stopYellowCounter()
 
-                    yellow.classList.remove('yellow')
-                    green.classList.add('green')
+                yellow.classList.remove('yellow')
+                green.classList.add('green')
 
-                    setTimeout(() => {
-                        elapsed = 0
-                        green.classList.remove('green')
-
-                    }, 3000)
-                }, 2000)
-            }, 3000)
+                const stopGreenCounter = startCounter(green)
+                await wait(3000)
+                stopGreenCounter()
+            }
         }
 
         start()
-        setInterval(start, 8000)
-
     </script>
 </body>
 
