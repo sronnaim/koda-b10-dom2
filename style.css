@@ -1,0 +1,48 @@
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style-type: none;
+}
+
+
+ul {
+    background-color: black;
+    max-width: 10rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 2rem;
+    gap: 1rem;
+    margin: auto;
+
+    li {
+        aspect-ratio: 1/1;
+        background-color: gray;
+        border-radius: 100%;
+        color: white;
+        vertical-align: middle;
+    }
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
+}
+
+p {
+    font-size: 2rem;
+    text-align: center;
+}

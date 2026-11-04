@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name='description' content='A typical traffic light'>
+    <title>Traffic Light</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <p></p>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </main>
+
+    <script>
+        const red = document.querySelector("li:first-child")
+        const yellow = document.querySelector("li:nth-child(2)")
+        const green = document.querySelector("li:last-child")
+        const p = document.querySelector("p")
+        let elapsed = 0
+        p.textContent = elapsed
+
+        setInterval(() => {
+            elapsed++
+            p.textContent = elapsed
+        }, 1000)
+
+        function start() {
+            red.classList.add('red')
+
+            setTimeout(() => {
+                elapsed = 0
+                red.classList.remove('red')
+                yellow.classList.add('yellow')
+
+                setTimeout(() => {
+                    elapsed = 0
+
+                    yellow.classList.remove('yellow')
+                    green.classList.add('green')
+
+                    setTimeout(() => {
+                        elapsed = 0
+                        green.classList.remove('green')
+
+                    }, 3000)
+                }, 2000)
+            }, 3000)
+        }
+
+        start()
+        setInterval(start, 8000)
+
+    </script>
+</body>
+
+</html>
